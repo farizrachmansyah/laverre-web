@@ -34,21 +34,33 @@ main {
   background-color: var(--color-light);
   color: var(--color-primary);
 }
+@media screen and (max-width: 1024px) {
+  main {
+    flex-direction: column;
+  }
+}
 
 #home-jumbotron,
 #home-content {
   height: 100%;
   width: 50%;
 }
+@media screen and (max-width: 1024px) {
+  #home-jumbotron,
+  #home-content {
+    width: 100%;
+  }
+}
 
 .jumbotron-image {
   display: inline-block;
   width: 100%;
   height: 100%;
-  background-image: url(../assets/home-img.jpg);
+  background-image: url(../assets/home-img1.jpg);
   background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
+  transition: all 0.3s ease-in-out;
 }
 
 #home-content {
@@ -56,6 +68,16 @@ main {
   flex-direction: column;
   justify-content: center;
   padding: 4rem;
+}
+@media screen and (max-width: 540px) {
+  #home-content {
+    padding: 2rem;
+  }
+}
+@media screen and (max-width: 376px) {
+  #home-content {
+    padding: 1.5rem;
+  }
 }
 
 header {
@@ -70,6 +92,11 @@ header {
   font-size: 1.75rem;
   font-family: var(--secondary-font);
   color: var(--color-primary);
+}
+@media screen and (max-width: 540px) {
+  #home-logo {
+    font-size: 1.25rem;
+  }
 }
 
 #menu {
@@ -87,6 +114,11 @@ header {
 .menu-link a:hover {
   color: var(--color-accent);
 }
+@media screen and (max-width: 540px) {
+  .menu-link a {
+    font-size: 1rem;
+  }
+}
 
 #text {
   /* margin-top: auto; */
@@ -97,6 +129,7 @@ header {
   text-transform: capitalize;
   font-size: 3rem;
   font-family: var(--secondary-font);
+  line-height: 1.2;
 }
 #text-desc span {
   font-family: var(--primary-font);
@@ -104,24 +137,68 @@ header {
   text-transform: uppercase;
   letter-spacing: 1px;
 }
+@media screen and (max-width: 540px) {
+  #text {
+    margin-bottom: 2rem;
+  }
+  #text-desc {
+    font-size: 2rem;
+  }
+  #text-desc span {
+    font-size: 0.75rem;
+  }
+}
+@media screen and (max-width: 376px) {
+  #text-desc {
+    max-width: 100%;
+  }
+}
 
 #subscription {
   margin-bottom: auto;
 }
+@media screen and (max-width: 540px) {
+  #subscription {
+    margin-bottom: 0;
+  }
+}
 
 form {
+  position: relative;
   max-width: 90%;
   display: flex;
   margin-bottom: 1rem;
-  border-bottom: 1px solid transparent;
 }
-form:focus-within {
-  border-bottom: 1px solid var(--color-secondary);
+form::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  left: 0;
+  display: inline-block;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-secondary);
+  transition: all 0.3s ease-in-out;
+}
+form:focus-within::after {
+  width: 100%;
+}
+@media screen and (max-width: 540px) {
+  form {
+    margin-bottom: 0.5rem;
+  }
+}
+@media screen and (max-width: 415px) {
+  form {
+    max-width: 100%;
+  }
 }
 
 #email-field {
   width: 100%;
   background-color: #fff;
+  color: var(--color-secondary);
   font-size: 1.125rem;
   padding: 12px;
   border: none;
@@ -129,6 +206,18 @@ form:focus-within {
 }
 #email-field::placeholder {
   color: var(--color-greyish);
+}
+@media screen and (max-width: 540px) {
+  #email-field {
+    padding: 12px;
+    font-size: 1rem;
+  }
+}
+@media screen and (max-width: 376px) {
+  #email-field {
+    padding: 10px;
+    font-size: 1rem;
+  }
 }
 
 #btn-subs {
@@ -145,6 +234,14 @@ form:focus-within {
 #btn-subs span {
   padding: 0 8px;
 }
+@media screen and (max-width: 376px) {
+  #btn-subs {
+    font-size: 0.875rem;
+  }
+  #btn-subs span {
+    padding: 0 4px;
+  }
+}
 
 #subs-detail {
   max-width: 90%;
@@ -157,4 +254,14 @@ form:focus-within {
 }
 #subs-detail a:hover {
   text-decoration: underline;
+}
+@media screen and (max-width: 540px) {
+  #subs-detail {
+    font-size: 0.75rem;
+  }
+}
+@media screen and (max-width: 415px) {
+  #subs-detail {
+    max-width: 100%;
+  }
 }
